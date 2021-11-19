@@ -11,8 +11,8 @@ var svg = d3.select("#scatter")
 
 var margin = {
     top: 20,
-    bottom: 20,
-    left: 20,
+    bottom: 50,
+    left: 50,
     right: 20
 }
 
@@ -83,5 +83,16 @@ d3.csv("assets/data/data.csv").then(data => {
             .attr("dx", d => xScale(d.age))
             .attr("dy", d => yScale(d.smokes))
             .text(d => d.abbr)
+
+    chartData.append("text")
+            .attr("dx", chartSize.width / 2)
+            .attr("dy", svgSize.height - 30) 
+            .text("Age")
+
+    chartData.append("text")
+            .attr("dx", -chartSize.height / 2)
+            .attr("dy", -30)
+            .attr("transform", "rotate(-90)")
+            .text("Smokes")
 
 })
